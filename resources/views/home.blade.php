@@ -9,7 +9,7 @@
                     class="rounded-circle" width="200px" height="200px">
             </div>
             <div class="col-9 pt-2">
-                <div class="pb-2"><h1>Hassan</h1></div>
+                <div class="pb-2"><h1>{{$user->username}}</h1></div>
                 <div class="d-flex">
                     <div class="pr-5"><strong>46</strong>posts</div>
                     <div class="pr-5"><strong>281</strong>followers</div>
