@@ -15,16 +15,19 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
-    public function store(): void
+    public function store()
     {
         $data = request()->validate([
             'caption' => 'required',
             'image' => ['required', 'image']
         ]);
 
-        dd(request('image')->store('uploads', 'public'));
+        $imagePath = request('image')->store('uploads', 'public');
 
-        auth()->user()->posts()->create($data);
-        dd(request()->all());
+        auth()->user()->posts()->create([
+            'caption' => $data['caption'],
+            'image' => $imagePath
+        ]);
+        return redirect('/profile/' . auth()->user()->id);
     }
 }

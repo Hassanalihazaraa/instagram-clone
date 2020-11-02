@@ -11,10 +11,10 @@
             <div class="col-9 pt-2">
                 <div class="pb-2 d-flex justify-content-between align-items-baseline">
                     <h1>{{$user->username}}</h1>
-                    <a href="#">Add a new post</a>
+                    <a href="/posts/create">Add a new post</a>
                 </div>
                 <div class="d-flex">
-                    <div class="pr-5"><strong class="pr-1">46</strong>posts</div>
+                    <div class="pr-5"><strong class="pr-1">{{$user->posts->count()}}</strong>posts</div>
                     <div class="pr-5"><strong class="pr-1">281</strong>followers</div>
                     <div class="pr-5"><strong class="pr-1">226</strong>followings</div>
                 </div>
@@ -24,21 +24,11 @@
             </div>
         </div>
         <div class="row pt-5">
-            <div class="col-3">
-                <img
-                    src="https://scontent-bru2-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/c131.0.818.818a/s640x640/42429223_2113831758946371_3636827782906710534_n.jpg?_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=103&_nc_ohc=HMWt5yzPVg4AX_h8Jsa&oh=6a6f03b0a65d8f825f72726f36f70501&oe=5FCB3783"
-                    class="w-100" alt="">
-            </div>
-            <div class="col-3">
-                <img
-                    src="https://scontent-bru2-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/42002778_240884236572435_6897771415476994744_n.jpg?_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=103&_nc_ohc=i_WQF83uH30AX8KbeKd&_nc_tp=24&oh=ab52efecb1dd6c535716dd05a6d3104c&oe=5FC87924"
-                    class="w-100" alt="">
-            </div>
-            <div class="col-3">
-                <img
-                    src="https://scontent-bru2-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/c135.0.810.810a/s640x640/34610305_921807641314381_6089522872718458880_n.jpg?_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=101&_nc_ohc=XjrZafaIt08AX8nwpFJ&oh=4e9ad20054487453686a5641cdd4c1fd&oe=5FCA0371"
-                    class="w-100" alt="">
-            </div>
+            @foreach($user->posts as $post)
+                <div class="col-3 pb-4">
+                    <img src="/storage/{{$post->image}}" class="w-100" alt="">
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection
