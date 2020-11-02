@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -11,8 +10,12 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store()
+    public function store(): void
     {
+        $data = request()->validate([
+            'caption' => 'required',
+            'image' => 'required'
+        ]);
         dd(request()->all());
     }
 }
