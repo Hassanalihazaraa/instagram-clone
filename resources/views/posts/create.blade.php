@@ -7,6 +7,7 @@
 
             <div class="row">
                 <div class="col-8 offset-2">
+
                     <div class="row">
                         <h1>Add a new Post</h1>
                     </div>
@@ -26,18 +27,17 @@
                             </span>
                         @enderror
                     </div>
+                    <div class="row">
+                        <label for="image" class="col-md-4 col-form-label">Post image</label>
+                        <input type="file" class="form-control-file" id="image" name="image">
+                        @error('image')
+                            <strong>{{ $message }}</strong>
+                        @enderror
+                    </div>
+                    <div class="row pt-4">
+                        <button class="btn btn-primary">Add new Post</button>
+                    </div>
                 </div>
-            </div>
-            <div class="row" style="margin-left: 11rem">
-                <label for="image" class="col-md-4 col-form-label">Post image</label>
-                <input type="file" class="form-control-file" id="image" name="image">
-                @error('image')
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-            <div class="row pt-4" style="margin-left: 11rem">
-                <button class="btn btn-primary">Add new Post</button>
             </div>
         </form>
     </div>
