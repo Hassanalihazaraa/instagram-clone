@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Post;
 use \Intervention\Image\Facades\Image;
 
 class PostsController extends Controller
 {
     public function __construct()
     {
-        //make this entire class authenticated
+        //make this entire class authenticated by using the auth key
         $this->middleware('auth');
     }
 
@@ -40,5 +41,12 @@ class PostsController extends Controller
         ]);
         //redirect user to profile page if he is logged in
         return redirect('/profile/' . auth()->user()->id);
+    }
+
+
+    public function show(Post $posts)
+    {
+        //return the view page and by using compact we are retuning the posts
+        return view('posts.show', compact('posts'));
     }
 }
