@@ -45,11 +45,11 @@ class User extends Authenticatable
 
     public function profile(): HasOne
     {
-        return $this->hasOne(Post::class);
+        return $this->hasOne(Profile::class);
     }
 
     public function posts(): HasMany
     {
-        return $this->hasMany(Profile::class);
+        return $this->hasMany(Post::class);
     }
 }
