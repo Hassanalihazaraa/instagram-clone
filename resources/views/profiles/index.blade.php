@@ -9,14 +9,14 @@
                     class="rounded-circle" width="200px" height="200px" alt="">
             </div>
             <div class="col-9 pt-2">
-                <div class="pb-2 d-flex justify-content-between">
+                <div class="pb-2 d-flex justify-content-between align-items-baseline">
                     <h1>{{$user->username}}</h1>
                     <a href="#">Add a new post</a>
                 </div>
                 <div class="d-flex">
-                    <div class="pr-5"><strong>46</strong>posts</div>
-                    <div class="pr-5"><strong>281</strong>followers</div>
-                    <div class="pr-5"><strong>226</strong>followings</div>
+                    <div class="pr-5"><strong class="pr-1">46</strong>posts</div>
+                    <div class="pr-5"><strong class="pr-1">281</strong>followers</div>
+                    <div class="pr-5"><strong class="pr-1">226</strong>followings</div>
                 </div>
                 <div class="pt-4 font-weight-bold">{{$user->profile->title}}</div>
                 <div class="pt-4 font-weight-bold">{{$user->profile->bio}}</div>
