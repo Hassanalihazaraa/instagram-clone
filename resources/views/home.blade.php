@@ -15,7 +15,9 @@
                     <div class="pr-5"><strong>281</strong>followers</div>
                     <div class="pr-5"><strong>226</strong>followings</div>
                 </div>
-                <div class="pt-4 font-weight-bold">Hassan Ali</div>
+                <div class="pt-4 font-weight-bold">{{$user->profile->title}}</div>
+                <div class="pt-4 font-weight-bold">{{$user->profile->bio}}</div>
+                <div class="pt-4 font-weight-bold">{{$user->profile->url}}</div>
             </div>
         </div>
         <div class="row pt-5">
