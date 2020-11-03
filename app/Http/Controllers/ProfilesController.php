@@ -16,4 +16,16 @@ class ProfilesController extends Controller
     {
         return view('profiles.edit', compact('user'));
     }
+
+    public function update(User $user)
+    {
+        $data = request()->validate([
+            'title' => 'required',
+            'bio' => 'required',
+            'url' => 'url',
+            'image' => ''
+        ]);
+        $user->profile()->update($data);
+        return redirect("/profile/{$user->id}");
+    }
 }
