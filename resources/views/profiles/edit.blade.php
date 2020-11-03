@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="/profile/{{$user->id}}/edit" enctype="multipart/form-data" method="post">
+        <form action="/profile/{{$user->id}}" enctype="multipart/form-data" method="post">
             <!-- @todo write an explanation on this -->
             @csrf
             @method('patch')
@@ -15,11 +15,11 @@
                     <div class="form-group row">
                         <label for="title" class="col-md-4 col-form-label">Title</label>
 
-                        <input id="caption"
+                        <input id="title"
                                type="text"
-                               class="form-control @error('caption') is-invalid @enderror"
+                               class="form-control @error('title') is-invalid @enderror"
                                name="title"
-                               value="{{ old('title') }}"
+                               value="{{ old('title') ?? $user->profile->title }}"
                                autocomplete="title" autofocus>
 
                         @error('title')
@@ -35,7 +35,7 @@
                                type="text"
                                class="form-control @error('bio') is-invalid @enderror"
                                name="bio"
-                               value="{{ old('bio') }}"
+                               value="{{ old('bio') ?? $user->profile->bio }}"
                                autocomplete="bio" autofocus>
 
                         @error('bio')
@@ -51,7 +51,7 @@
                                type="text"
                                class="form-control @error('url') is-invalid @enderror"
                                name="url"
-                               value="{{ old('url') }}"
+                               value="{{ old('url') ?? $user->profile->url }}"
                                autocomplete="url" autofocus>
 
                         @error('url')
