@@ -37,8 +37,10 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
+                <ul class="navbar-nav">
+                    @auth()
+                        <li><a class="font-weight-bold" href="/profile/{{Auth::user()->profile->id}}">Profile</a></li>
+                    @endauth
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -59,7 +61,6 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->username }}
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
