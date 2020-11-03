@@ -25,10 +25,10 @@
                     @endcan
                 </div>
                 <div class="d-flex">
-                    <div class="pr-5"><strong class="pr-1">{{$user->posts->count()}}</strong>posts</div>
-                    <div class="pr-5"><strong class="pr-1">{{$user->profile->followers->count()}}</strong>followers
+                    <div class="pr-5"><strong class="pr-1">{{$postCount}}</strong>posts</div>
+                    <div class="pr-5"><strong class="pr-1">{{$followersCount}}</strong>followers
                     </div>
-                    <div class="pr-5"><strong class="pr-1">{{$user->following->count()}}</strong>followings</div>
+                    <div class="pr-5"><strong class="pr-1">{{$followingCount}}</strong>followings</div>
                 </div>
                 <div class="pt-4 font-weight-bold">{{$user->profile->title}}</div>
                 <div class="pt-4 font-weight-bold">{{$user->profile->bio}}</div>

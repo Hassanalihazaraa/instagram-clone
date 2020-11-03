@@ -3,21 +3,47 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
 {
-    /*
     public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
     public function index(User $user)
     {
         $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
 
-        return view('profiles.index', compact('user', 'follows'));
+        //count the posts and cache it for 30 seconds to improve site performance
+        $postCount = Cache::remember(
+            'count.posts.' . $user->id,
+            now()->addSeconds(30),
+
+            function () use ($user) {
+                return $user->posts->count();
+            });
+        //count the followers and cache it for 30 seconds to improve site performance
+        $followersCount = Cache::remember(
+            'count.followers.' . $user->id,
+            now()->addSeconds(30),
+
+            function () use ($user) {
+                return $user->profile->followers->count();
+            });
+
+        //count the followings and cache it for 30 seconds to improve site performance
+        $followingCount = Cache::remember(
+            'count.followings.' . $user->id,
+            now()->addSeconds(30),
+
+            function () use ($user) {
+                return $user->following->count();
+            });
+
+        return view('profiles.index', compact('user', 'follows', 'postCount', 'followersCount', 'followingCount'));
     }
 
 
