@@ -6,6 +6,11 @@ use App\Models\User;
 
 class ProfilesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(User $user)
     {
         return view('profiles.index', compact('user'));
@@ -25,7 +30,7 @@ class ProfilesController extends Controller
             'url' => 'url',
             'image' => ''
         ]);
-        $user->profile()->update($data);
+        auth()->user()->profile->update($data);
         return redirect("/profile/{$user->id}");
     }
 }
