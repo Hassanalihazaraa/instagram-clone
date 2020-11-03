@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -55,16 +56,19 @@ class User extends Authenticatable
         });
     }
 
+    //one to one relation with profile
     public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
     }
 
-    public function following()
+    //many to many relation with profile
+    public function following(): BelongsToMany
     {
         return $this->belongsToMany(Profile::class);
     }
 
+    //one to many relation with profile
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class)->orderBy('created_at', 'desc');

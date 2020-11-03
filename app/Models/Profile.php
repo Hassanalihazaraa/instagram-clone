@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Profile extends Model
 {
@@ -15,12 +16,14 @@ class Profile extends Model
         return '/storage/' . $imagePath;
     }
 
+    //one to one relation
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function followers()
+    //many to many relation with user
+    public function followers(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }
