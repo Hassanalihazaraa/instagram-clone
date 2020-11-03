@@ -5,7 +5,7 @@
         <form action="/profile/{{$user->id}}" enctype="multipart/form-data" method="post">
             <!-- @todo write an explanation on this -->
             @csrf
-            @method('patch')
+            @method('PATCH')
 
             <div class="row">
                 <div class="col-8 offset-2">
