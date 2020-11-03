@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/posts/create', [PostsController::class, 'create']);
+Route::get('/posts/create', [PostsController::class, 'create']); 
 Route::post('/posts', [PostsController::class, 'store']);
 Route::get('/posts/{posts}', [PostsController::class, 'show']);
 

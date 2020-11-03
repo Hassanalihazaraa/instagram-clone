@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Auth\Access\AuthorizationException;
 
 class ProfilesController extends Controller
 {
+    /*
     public function __construct()
     {
         $this->middleware('auth');
-    }
+    }*/
 
     public function index(User $user)
     {
@@ -20,16 +20,15 @@ class ProfilesController extends Controller
 
     public function edit(User $user)
     {
-        try {
-            $this->authorize('update', $user->profile);
-            return view('profiles.edit', compact('user'));
-        } catch (AuthorizationException $e) {
-            echo "You are not allowed to edit this Profile";
-        }
+        $this->authorize('update', $user->profile);
+
+        return view('profiles.edit', compact('user'));
     }
 
     public function update(User $user)
     {
+        $this->authorize('update', $user->profile);
+
         $data = request()->validate([
             'title' => 'required',
             'bio' => 'required',

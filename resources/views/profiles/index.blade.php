@@ -11,10 +11,14 @@
             <div class="col-9 pt-2">
                 <div class="pb-2 d-flex justify-content-between align-items-baseline">
                     <h1>{{$user->username}}</h1>
-                    <a href="/posts/create">Add a new post</a>
+                    @can('update', $user->profile)
+                        <a href="/posts/create">Add a new post</a>
+                    @endcan
                 </div>
                 <div>
-                    <a href="/profile/{{$user->id}}/edit">Edit Profile</a>
+                    @can('update', $user->profile)
+                        <a href="/profile/{{$user->id}}/edit">Edit Profile</a>
+                    @endcan
                 </div>
                 <div class="d-flex">
                     <div class="pr-5"><strong class="pr-1">{{$user->posts->count()}}</strong>posts</div>
