@@ -8,13 +8,9 @@ use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index(User $user)
     {
+        //if user is authenticated, he can see the follow button else not
         $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
 
         //count the posts and cache it for 30 seconds to improve site performance
