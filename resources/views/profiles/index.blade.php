@@ -12,7 +12,7 @@
                     <div class="d-flex align-items-center pb-2">
                         <div class="h4">{{$user->username}}</div>
 
-                        <follow-button></follow-button>
+                        <follow-button user-id="{{$user->id}}"></follow-button>
                     </div>
 
                     @can('update', $user->profile)
