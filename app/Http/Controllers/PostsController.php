@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Post;
+use App\Models\User;
 use \Intervention\Image\Facades\Image;
 
 class PostsController extends Controller
@@ -53,9 +54,11 @@ class PostsController extends Controller
     }
 
 
-    public function show(Post $posts)
+    public function show(Post $posts, User $user)
     {
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
+
         //return the view page and by using compact we are retuning the posts
-        return view('posts.show', compact('posts'));
+        return view('posts.show', compact('posts', 'user','follows'));
     }
 }

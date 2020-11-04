@@ -15,11 +15,12 @@
                                  style="max-width: 40px;">
                         </div>
                         <div>
-                            <div class="font-weight-bold">
-                                <a href="/profile/{{$posts->user->id}}">
+                            <div class="font-weight-bold d-flex">
+                                <a href="/profile/{{$posts->user->id}}" class="mt-2">
                                     <span class="text-dark">{{$posts->user->username}}</span>
                                 </a>
-                                <a href="#" class="pl-3">Follow</a>
+                                {{-- @todo this follow button doesn't work --}}
+                                <follow-button user-id="{{$posts->user->id}}" follows="{{$follows}}"></follow-button>
                             </div>
                         </div>
                     </div>
